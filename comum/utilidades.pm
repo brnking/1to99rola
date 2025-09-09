@@ -1,7 +1,7 @@
 automacro utilidades_configEstaErrada {
     exclusive 1
     overrideAI 1
-    priority -5
+    priority 994
     ConfigKeyNot autoTalkCont 1
     call {
         log Tem uma config que está errada

@@ -36,6 +36,35 @@ automacro parandoDePegarPotDeAprendiz {
     }
 }
 
+automacro usarPocaoLaranja {
+    InInventoryID 569 < 1
+    InStorageID 569 < 1
+	JobIDNot 0
+	Zeny > 5000
+	ConfigKeyNot useSelf_item_0 Poção Laranja
+    exclusive 1
+    call {
+        [
+        log ===================================
+        log = Hora de usar Poção Laranja
+        log ===================================
+        ]
+        do conf useSelf_item_0 Poção Laranja
+		do conf useSelf_item_0_hp < 60%
+		do conf useSelf_item_0_notWhileSitting 0
+		[
+        log =====================================
+        log = Configurar compra da Poção Laranja
+        log =====================================
+        ]
+		do conf buyAuto_0 Poção Laranja
+		do conf buyAuto_0_minAmount 15
+		do conf buyAuto_0_maxAmount 100
+		do conf buyAuto_0_npc &config(saveMap_posicaoNpcPraPocao)
+		do conf buyAuto_0_disabled 0
+    }
+}
+
 sub adicionaAttackSkillSlot {
     open (my $fh, '>>:encoding(UTF-8)', Settings::getConfigFilename());
     print $fh "attackSkillSlot {\n";

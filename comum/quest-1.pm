@@ -1,6 +1,5 @@
 automacro questClasse1_virandoClasse1_bugada {
     JobLevel = 10
-    InMapRegex /^(?!new_\d-\d)$/
     SkillLevel NV_BASIC != 9
     exclusive 1
     call {
@@ -43,12 +42,11 @@ automacro questClasse1_virandoClasse1 {
 
 automacro questClasse1_saiDoCampoDeTreinamentoEEstouNoMapaErrado {
     NotInMap $parametrosQuestClasse1{mapa}
-    InMapRegex /^(?!new_\d-\d).*/
     JobID 0, 4023 #Aprendiz e Baby Aprendiz
     JobLevel 10
     SkillLevel NV_BASIC = 9
     exclusive 1
-    BaseLevel > 11
+    BaseLevel > 6
     call {
         [
             log ==============================================

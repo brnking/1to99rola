@@ -43,7 +43,7 @@ automacro VirarSacer_IrNoNpc {
     QuestInactive 8013
     QuestInactive 8014
     QuestInactive 8015
-    priority 2
+    priority 1002
     exclusive 1
     call {
         call pararDeAtacar

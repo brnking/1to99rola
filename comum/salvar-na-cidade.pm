@@ -1,5 +1,7 @@
 macro salvarNaCidade {
     call pararDeAtacar
+    release definirVariavelSaveMap
+    $saveMap = undef
     do conf lockMap none
     if (&config(master) =~ /Valhalla/ ) {
         do conf -f saveMap_sequenciaPraArmazenar r1 r0
@@ -42,12 +44,14 @@ macro salvarNaCidade {
             do conf -f saveMap_posicaoKafra 151 29
             do conf -f saveMap_posicaoNpcVenda prontera 113 42
             do conf -f saveMap_posicaoNpcPraPocao prt_in 126 76
+			do conf -f saveMap_sequenciaPraArmazenar r2
         }
         case (=~ /payon/i ) {
             do conf -f saveMap_desejado payon
             do conf -f saveMap_posicaoKafra 181 104
             do conf -f saveMap_posicaoNpcVenda payon 159 96
-            do conf -f saveMap_posicaoNpcPraPocao payon_in01 5 49
+            do conf -f saveMap_posicaoNpcPraPocao payon 159 96
+			do conf -f saveMap_sequenciaPraArmazenar r2
         }
         case (=~ /geffen/i ) {
             do conf -f saveMap_desejado geffen
@@ -63,9 +67,9 @@ macro salvarNaCidade {
         }
         case (=~ /izlude/i ) {
             do conf -f saveMap_desejado izlude
-            do conf -f saveMap_posicaoKafra 134 88
-            do conf -f saveMap_posicaoNpcVenda izlude 105 99
-            do conf -f saveMap_posicaoNpcPraPocao izlude_in 115 61
+            do conf -f saveMap_posicaoKafra 128 148
+            do conf -f saveMap_posicaoNpcVenda izlude 128 158
+            do conf -f saveMap_posicaoNpcPraPocao izlude_in 57 110
         }
         case ( =~ /veins/i ) {
             do conf -f saveMap_desejado veins
@@ -115,7 +119,7 @@ automacro definirVariavelSaveMap {
     ConfigKeyNot saveMap_posicaoKafra       none
     ConfigKeyNot saveMap_posicaoNpcVenda    none
     ConfigKey naSequenciaDeSalvamento true
-    priority -4
+    priority 995
     CheckOnAI auto, manual
     call {
         $saveMap = &config(saveMap_desejado)
@@ -190,7 +194,7 @@ automacro movendoPraKafraDentroDaCidade {
     CheckOnAI manual
     ConfigKeyNot saveMap $saveMap
     ConfigKeyNot saveMap_desejado none
-    NpcNotNear /Kafra Employee|Funcionária Kafra|Corp.|Kafra Recepc/
+    NpcNotNear /Kafra/
     InMap $saveMap
     call move_to_near_kafra
 }
@@ -206,22 +210,26 @@ automacro FalarComKafra {
     ConfigKeyNot saveMap $saveMap
     ConfigKeyNot saveMap_desejado none
     InMap $saveMap
-    NpcNear /Kafra Employee|Funcionária Kafra|Corp.|Kafra Recepc/
+    NpcNear /Kafra/
     delay 2
     timeout 20
     call {
         log ===============================================
         log Falando com kafra na posição: &config(saveMap_posicaoKafra)
         log ===============================================
-        do talknpc &config(saveMap_posicaoKafra) r0
+		if ($saveMap =~ /payon/ || $saveMap =~ /prontera/) {
+			do talknpc &config(saveMap_posicaoKafra) r1
+		} else {
+			do talknpc &config(saveMap_posicaoKafra) r0
+		}
     }
 }
 
 automacro SalvoNaKafra {
     exclusive 1
     CheckOnAI manual
-    priority -5
-    NpcMsgName /O seu Ponto (de Retorno )?foi salvo|saved here|foi salvo aqui na cidade|foi salvo em|foi salvo aqui/ /Kafra Employee|Funcionária Kafra|Corp|Kafra Recepc/
+    priority 994
+    NpcMsgName /O seu Ponto (de Retorno )?foi salvo|saved here|Seu ponto foi salvo|foi salvo aqui na cidade|foi salvo em|foi salvo aqui|Your point has been saved\.?/ /Kafra/
     ConfigKeyNot saveMap $saveMap
     ConfigKey naSequenciaDeSalvamento true
     InMap $saveMap
@@ -291,4 +299,3 @@ automacro saveMapNone {
 #
 # FIM DA MACRO DE SALVAR NA KAFRA
 #
-

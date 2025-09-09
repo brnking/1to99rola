@@ -1,13 +1,13 @@
-sub configurarBuild {
+﻿sub configurarBuild {
     my %configsBuild = (
         skillsAprendiz => 'NV_BASIC 9',
-        skillsClasse1 => 'AL_HEAL 10, AL_INCAGI 10, AL_DP 3, AL_ANGELUS 5, AL_DP 6, AL_BLESSING 5, AL_ANGELUS 10, AL_BLESSING 10, AL_RUWACH 1, AL_HOLYWATER 1, AL_PNEUMA 1',
+        skillsClasse1 => 'AL_HEAL 3, AL_INCAGI 5, AL_DP 5, AL_BLESSING 5, AL_RUWACH 1, AL_TELEPORT 2, AL_WARP 4, AL_PNEUMA 1, AL_HEAL 5, AL_INCAGI 10, AL_BLESSING 10, AL_HEAL 10, AL_ANGELUS 5, AL_HOLYWATER 1',
         skillsClasse2 => 'PR_KYRIE 4, PR_MAGNIFICAT 5, PR_GLORIA 5, PR_STRECOVERY 1, PR_KYRIE 10, PR_IMPOSITIO 5, PR_SANCTUARY 10, MG_SRECOVERY 4, ALL_RESURRECTION 4, MG_SRECOVERY 9',
-        skillsClasse1T => 'AL_HEAL 10, AL_INCAGI 10, AL_DP 3, AL_ANGELUS 5, AL_DP 5, AL_BLESSING 5, AL_ANGELUS 10, AL_BLESSING 10, AL_RUWACH 1, AL_HOLYWATER 1, AL_PNEUMA 1, AL_DECAGI 1',
+        skillsClasse1T => 'AL_HEAL 3, AL_INCAGI 5, AL_DP 5, AL_BLESSING 5, AL_RUWACH 1, AL_TELEPORT 2, AL_WARP 4, AL_PNEUMA 1, AL_HEAL 5, AL_INCAGI 10, AL_BLESSING 10, AL_HEAL 10, AL_ANGELUS 5, AL_HOLYWATER 1',
         skillsClasse2T => 'PR_KYRIE 4, PR_MAGNIFICAT 5, PR_GLORIA 3, PR_STRECOVERY 1, PR_KYRIE 10, PR_IMPOSITIO 3, PR_SANCTUARY 7, MG_SRECOVERY 5, ALL_RESURRECTION 4, PR_LEXDIVINA 5, PR_LEXAETERNA 1, PR_ASPERSIO 4, HP_MEDITATIO 10, MG_SAFETYWALL 8, PR_REDEMPTIO 1',
         skillsClasse3 => 'AB_CHEAL 3, AB_CANTO 3, AB_CLEMENTIA 3, AB_PRAEFATIO 10, AB_RENOVATIO 1, AB_HIGHNESSHEAL 5, AB_OFFERTORIUM 5',
-        statsPadrao => '10 vit, 20 int, 15 dex, 20 vit, 25 dex, 30 int, 30 vit, 35 dex, 40 int, 45 vit, 50 int, 40 dex, 60 int, 75 vit, 95 int, 56 dex',
-        statsPadraoTransclasse => '10 vit, 20 int, 15 dex, 20 vit, 25 dex, 30 int, 30 vit, 35 dex, 40 int, 45 vit, 50 int, 40 dex, 60 int, 75 vit, 95 int, 56 dex',
+        statsPadrao => '30 dex, 10 int, 50 dex, 20 int, 60 dex, 40 int, 10 vit, 70 dex, 60 int, 30 vit, 80 dex, 70 int, 50 vit, 90 dex, 80 int, 60 vit, 99 dex',
+        statsPadraoTransclasse => '30 dex, 10 int, 50 dex, 20 int, 60 dex, 40 int, 10 vit, 70 dex, 60 int, 30 vit, 80 dex, 70 int, 50 vit, 90 dex, 80 int, 60 vit, 99 dex',
         statsPadraoClasse3 => '-1',
         lvlClasseParaVirarClasse2 => '50',
         lvlClasseParaVirarClasse2T => '50'
